@@ -4,14 +4,7 @@ var name = "";
 
 function getHome(req, res) {
 	res.writeHead(200, {"Content-Type": "text/html"});
-    res.write("<html><body><h1> Hello World!, Welcome to WeJapa Internships</h1><br><h2> Make a post with your name.</h2><h2><form method='post'><label for='name'> Name:</label><br><input type='text' id='name' value='your name'><br><input type='submit' value='Submit'></form></h2></body></html>");
-	res.end();
-}
-
-
-function doPost(req, res) {
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write('Hello World, Welcome to WeJapa Interships');
+    res.write("<html><body><h1> Hello World!, Welcome to WeJapa Internships</h1><br><h2> Make a POST request with your name.</h2><h2><form method='post'><label for='name'> Name:</label><br><input type='text' id='name' value='your name'><br><input type='submit' value='Submit'></form></h2></body></html>");
 	res.end();
 }
 
@@ -27,8 +20,8 @@ const simpleServer = http.createServer((req, res) => {
 		if (req.url === "/") {
 			var reqBody = '';
 			req.on('data', (data) => {
-				reqBody += data;
-
+                reqBody += data;
+                process.stdout.write(data);
 			});
 
 			req.on('end', (data) => {
